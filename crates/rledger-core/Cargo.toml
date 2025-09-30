@@ -1,0 +1,16 @@
+[package]
+name = "rledger-core"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rledger-common = { workspace = true }
+nom = { workspace = true }
+rust_decimal = { workspace = true }
+chrono = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+serde = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }

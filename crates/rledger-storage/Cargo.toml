@@ -1,0 +1,12 @@
+[package]
+name = "rledger-storage"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rledger-common = { workspace = true }
+rledger-core = { workspace = true }
+sqlx = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }

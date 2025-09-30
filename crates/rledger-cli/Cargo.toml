@@ -1,0 +1,19 @@
+[package]
+name = "rledger-cli"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "rledger"
+path = "src/main.rs"
+
+[dependencies]
+rledger-common = { workspace = true }
+rledger-core = { workspace = true }
+rledger-storage = { workspace = true }
+clap = { workspace = true }
+colored = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
