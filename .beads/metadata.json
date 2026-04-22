@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "rledger",
+  "project_id": "4a638611-ea5e-4375-89ad-06484a2f3d32"
+}

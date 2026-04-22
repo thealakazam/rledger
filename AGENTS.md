@@ -1,45 +1,40 @@
-# rledger - AI Assistant Instructions
+# Agent Instructions
 
-## Project Context
-This is rledger, a modern plain-text accounting system in Rust. See docs/TECHNICAL_SPEC.md for complete details.
+This project uses **bd** (beads) for issue tracking. Run `bd prime` for full workflow context.
 
-## Key Rules
-1. Use workspace dependencies: `{ workspace = true }`
-2. Use `Decimal` for all monetary amounts, NEVER `f64`
-3. Use `thiserror` for library errors, `anyhow` for application errors
-4. Document all public APIs with examples
-5. Add tests for all new code (target: 80% coverage)
-6. Follow Rust 2024 edition idioms
-7. Immutable data structures preferred
-8. Check TECHNICAL_SPEC.md before making architectural decisions
+## Quick Reference
 
-## File Structure
-- `crates/rledger-common`: Shared types (AccountName, Amount, Transaction)
-- `crates/rledger-core`: Parser (nom) and validation logic
-- `crates/rledger-storage`: SQLite cache layer
-- `crates/rledger-cli`: CLI interface (clap)
-
-## Common Patterns
-```rust
-// Error handling
-use anyhow::{Context, Result};
-let data = load_data().context("Failed to load")?;
-
-// Decimal for money
-use rust_decimal::Decimal;
-let amount = Decimal::from_str("10.50")?;
-
-// Dates
-use chrono::NaiveDate;
-let date = NaiveDate::from_ymd_opt(2024, 1, 15).unwrap();
+```bash
+bd ready              # Find available work
+bd show <id>          # View issue details
+bd update <id> --claim  # Claim work atomically
+bd close <id>         # Complete work
+bd dolt push          # Push beads data to remote
 ```
 
-## When in doubt
+## Non-Interactive Shell Commands
 
-Check docs/TECHNICAL_SPEC.md
-Prioritize correctness over performance
-Ask for clarification on ambiguous requirements
+**ALWAYS use non-interactive flags** with file operations to avoid hanging on confirmation prompts.
 
+Shell commands like `cp`, `mv`, and `rm` may be aliased to include `-i` (interactive) mode on some systems, causing the agent to hang indefinitely waiting for y/n input.
+
+**Use these forms instead:**
+```bash
+# Force overwrite without prompting
+cp -f source dest           # NOT: cp source dest
+mv -f source dest           # NOT: mv source dest
+rm -f file                  # NOT: rm file
+
+# For recursive operations
+rm -rf directory            # NOT: rm -r directory
+cp -rf source dest          # NOT: cp -r source dest
+```
+
+**Other commands that may prompt:**
+- `scp` - use `-o BatchMode=yes` for non-interactive
+- `ssh` - use `-o BatchMode=yes` to fail instead of prompting
+- `apt-get` - use `-y` flag
+- `brew` - use `HOMEBREW_NO_AUTO_UPDATE=1` env var
 
 <!-- BEGIN BEADS INTEGRATION v:1 profile:minimal hash:ca08a54f -->
 ## Beads Issue Tracker
