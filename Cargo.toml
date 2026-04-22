@@ -29,15 +29,15 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
 # Parsing
+logos = "0.15"
 nom = "7.1"
 
 # CLI
 clap = { version = "4.5", features = ["derive", "cargo", "env"] }
 colored = "2.1"
 
-# Database and async
-sqlx = { version = "0.8", features = ["runtime-tokio-rustls", "sqlite", "chrono", "rust_decimal", "migrate"] }
-tokio = { version = "1.40", features = ["full"] }
+# Database
+rusqlite = { version = "0.32", features = ["bundled", "chrono"] }
 
 # Logging
 tracing = "0.1"

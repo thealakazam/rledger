@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 rledger-common = { workspace = true }
+logos = { workspace = true }
 nom = { workspace = true }
 rust_decimal = { workspace = true }
 chrono = { workspace = true }
